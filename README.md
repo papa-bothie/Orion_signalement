@@ -1,73 +1,46 @@
-# Welcome to your Lovable project
+# 🌟 ORION - Plateforme de Signalement JOJ 2026
 
-## Project info
+## 📖 Description de l'application
+ORION est une application mobile et web conçue pour les **Jeux Olympiques de la Jeunesse (JOJ) 2026 au Sénégal**. Son objectif est de protéger et coordonner les interventions en permettant au staff, aux bénévoles et aux citoyens de signaler rapidement des incidents (sécurité, médical, technique, logistique) depuis leur téléphone. 
 
-**URL**: https://lovable.dev/projects/38c1192f-a37f-440b-b7b4-b9e4db114dcd
+Pour simplifier et accélérer les procédures, **ORION intègre un assistant virtuel (IA Chatbot)** capable de converser en langage naturel avec la victime afin de déduire le lieu, l'urgence, et lancer une alerte qualifiée aux équipes de secours. À l'origine un prototype Web, ce dépôt représente l'architecture professionnelle native Mobile (React Native / Expo).
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 📦 Installations nécessaires
+Pour contribuer ou tester le projet sur votre machine en local, vous aurez besoin de **Node.js** (v18+).
 
-**Use Lovable**
+```bash
+# 1. Naviguez vers le répertoire de la version Mobile
+cd orion-mobile
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/38c1192f-a37f-440b-b7b4-b9e4db114dcd) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# 2. Installez toutes les dépendances (dont React Native, React Navigation, Zustand...)
+npm install
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🚀 Comment lancer le projet
 
-**Use GitHub Codespaces**
+Le cœur de l'application a été conçu avec le framework **Expo**.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Ouvrez un terminal dans le dossier **`orion-mobile`**.
+2. Lancez la commande suivante :
+   ```bash
+   npx expo start
+   ```
+3. **Tester sur votre appareil** : 
+   * **Mobile natif** : Téléchargez l'application **Expo Go** (sur iOS ou Android) et scannez le QR code affiché dans votre terminal.
+   * **Simulateur Web** : Appuyez sur la touche **`w`** de votre clavier dans le terminal pour l'ouvrir, via un navigateur classique.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 🎯 Tâches à compléter (Roadmap)
+L'application possède actuellement une architecture front-end robuste, modulaire (`components`, `services`, `store`), prête à être branchée (`Squelette natif`), mais gère ses données en mémoire locale pure. Voici les jalons pour obtenir le résultat de production escompté :
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/38c1192f-a37f-440b-b7b4-b9e4db114dcd) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- [ ] **Brancher le Backend Définitif** : Modifier `src/services/incidents.service.ts` pour remplacer la sauvegarde `AsyncStorage` par de vraies requêtes HTTP (`Axios`) vers le serveur back-end ORION.
+- [ ] **Connecter la Véritable Intelligence Artificielle** : Remplacer l'algorithme "bouchon" basé sur des mots-clés (`src/services/ai.service.ts`) par un appel vers une API Deep Learning / LLM (Mistral, OpenAI) pour une conversation fluide.
+- [ ] **Activer la localisation GPS Automatique** : Relier le signalement de `ReportScreen` au capteur natif du téléphone avec `expo-location` pour accroître la précision d'intervention.
+- [ ] **Activer l'Upload Photo/Caméra** : Intégrer `expo-image-picker` pour que les utilisateurs puissent joindre les preuves visuelles à l'incident.
+- [ ] **Implémenter le Temps Réel (WebSockets)** : Permettre de recevoir des notifications silencieuses depuis le QG pour que l'icône de statut ("En attente" -> "Résolu") change localement en temps réel pour l'utilisateur.
+- [ ] **Authentification** : Mettre en place un système de login et de session (`Zustand Store`) pour différencier un Citoyen anonyme d'un Agent ORION habilité.
