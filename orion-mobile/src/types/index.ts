@@ -19,6 +19,8 @@ export interface Incident {
     type: 'SECURITY' | 'MEDICAL' | 'TECHNICAL' | 'LOGISTICS' | 'OTHER';
     urgency: 'URGENT' | 'NON_URGENT';
     location: string;
+    latitude?: number;
+    longitude?: number;
     description: string;
     photoUrl?: string;
     status: IncidentStatus;
